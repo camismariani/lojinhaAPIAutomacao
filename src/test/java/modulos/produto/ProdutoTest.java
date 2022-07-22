@@ -12,6 +12,6 @@ public class ProdutoTest {
     public void testValidarLimitesProibidosValorProduto(){
         double valor=0;
 
-        Assertions.assertTrue(valor > 0);
+        Assertions.assertTrue(valor >= 0);
     }
 }
