@@ -1,6 +1,7 @@
 package modulos.produto;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.*;
@@ -19,6 +20,19 @@ public class ProdutoTest {
         basePath = "/lojinha";
 
         // obter o token do usuario admin
+        String token = given()
+                .contentType(ContentType.JSON)
+                .body("{\n" +
+                        "  \"usuarioLogin\": \"admin\",\n" +
+                        "  \"usuarioSenha\": \"admin\"\n" +
+                        "}")
+                .when()
+                    .post("/v2/login")
+                .then()
+                    .extract()
+                        .path("data.token");
+
+        System.out.println(token);
 
         //tentar inserir um produto com valor 0.00 e validar que a msg de erro foi apresentada
         // e o status code retornado foi 422
