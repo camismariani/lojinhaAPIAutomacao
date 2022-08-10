@@ -26,7 +26,7 @@ public class ProdutoTest {
     @BeforeEach
     public void beforeEach(){
         // COnfigurando os dados da API Rest da lojinha
-        baseURI = "http://165.227.93.41/";
+        baseURI = "http://165.227.93.41";
         // port = 8082;
         basePath = "/lojinha";
 
@@ -41,6 +41,8 @@ public class ProdutoTest {
                 .then()
                 .extract()
                 .path("data.token");
+
+
 
     }
     @Test
